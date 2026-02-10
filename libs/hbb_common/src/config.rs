@@ -772,8 +772,8 @@ impl Config {
     }
 
     pub fn get_rendezvous_servers() -> Vec<String> {
-        // FASE 1: Hardcoding - Retorna apenas o seu servidor na lista
-        vec![get_rendezvous_server()]
+        // CORREÇÃO: Adicionamos "Self::" antes da função
+        vec![Self::get_rendezvous_server()]
     }
 
     pub fn reset_online() {
