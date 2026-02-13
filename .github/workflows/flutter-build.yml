@@ -132,16 +132,16 @@ jobs:
           targets: ${{ matrix.job.target }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: ${{ matrix.job.os }}
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     prefix-key: ${{ matrix.job.os }}
 
       - name: Setup vcpkg with Github Actions binary cache
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgDirectory: C:\vcpkg
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         env:
@@ -325,16 +325,16 @@ jobs:
           targets: ${{ matrix.job.target }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: ${{ matrix.job.os }}-sciter
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     prefix-key: ${{ matrix.job.os }}-sciter
 
       - name: Setup vcpkg with Github Actions binary cache
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgDirectory: C:\vcpkg
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         env:
@@ -478,7 +478,7 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         run: |
@@ -505,10 +505,10 @@ jobs:
           targets: ${{ matrix.job.target }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: rustdesk-lib-cache-ios
-          key: ${{ matrix.job.target }}
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     prefix-key: rustdesk-lib-cache-ios
+      #     key: ${{ matrix.job.target }}
 
       - name: Restore bridge files
         uses: actions/download-artifact@master
@@ -668,9 +668,9 @@ jobs:
           targets: ${{ matrix.job.target }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: ${{ matrix.job.os }}
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     prefix-key: ${{ matrix.job.os }}
 
       - name: Restore bridge files
         uses: actions/download-artifact@master
@@ -682,7 +682,7 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         run: |
@@ -923,7 +923,7 @@ jobs:
         with:
           vcpkgDirectory: /opt/artifacts/vcpkg
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         run: |
@@ -965,10 +965,10 @@ jobs:
           toolchain: ${{ env.RUST_VERSION }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: rustdesk-lib-cache-android # TODO: drop '-android' part after caches are invalidated
-          key: ${{ matrix.job.target }}
+      # - uses: Swatinem/rust-cache@v2
+      #   with:
+      #     prefix-key: rustdesk-lib-cache-android # TODO: drop '-android' part after caches are invalidated
+      #     key: ${{ matrix.job.target }}
 
       - name: Build rustdesk lib
         env:
@@ -1380,7 +1380,7 @@ jobs:
         with:
           vcpkgDirectory: /opt/artifacts/vcpkg
           vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
-          doNotCache: false
+          doNotCache: true
 
       - name: Install vcpkg dependencies
         if: matrix.job.arch == 'x86_64' || env.UPLOAD_ARTIFACT == 'true'
